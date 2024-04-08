@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>All Possible Strategy &mdash; Check Chart for Detail Decision</title>
+    <meta name="decorator" content="atl.general">
+    <script>
+        AJS.$(document).ready(function() {
+            jQuery('.delete-issue').click(function() {
+                console.log('deleting');
+                var self = jQuery(this);
+                jQuery.ajax({
+                    type: "delete",
+                    url: "issuecrud?key=" + self.data("key"),
+                    success: function(data) {
+                        console.log('dom', self, data);
+                        self.parent().parent().remove();
+                    },
+                    error: function() {
+                        console.log('error', arguments);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+<body class="page-type-admin">
+<div class="content-container" id="issue-crud-container">
+
+    <div class="content-body">
+        <h1>Stock found: #if(!$strategyList || $strategyList.size()==0)<span style="color:red">NO</span>#end $strategyList.size() Symbol!</h1>	
+        #if ($errors && $errors.size()>0)
+            <div class="aui-message error shadowed crud-error">
+                #foreach($error in $errors)
+                    <p class="title">
+                        <span class="aui-icon icon-error"></span>
+                        <strong>$error</strong>
+                    </p>
+                #end
+            </div>
+            <!-- .aui-message -->
+        #end
+
+        #if ($strategyList.size() > 0)
+            <div class="issues">
+                <table class="aui">
+                    <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Summary</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        #foreach( $strategy in $strategyList )
+                        <tr class="issue-line">
+                            <td class="issue-key">$strategy.getName()</td>
+                            <td class="issue-summary">$strategy.getName()</td>
+                            <td>
+								<a href=/jira/plugins/servlet/chart?symbol=$strategy.getName() target="_blank">$strategy.getName()</a>
+                                
+                            </td>
+                        </tr>
+                        #end
+                    </tbody>
+                </table>
+            </div>
+        #end
+    </div>
+</div>
+</body>
+</html>
