@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Stock Analystic — Select Strategy to Run</title>
+    <meta name="decorator" content="atl.general">
+</head>
+<body class="page-type-admin">
+<div class="content-container" id="issue-crud-container">
+
+    <div class="content-body">
+        <h1>Seletec Strategy</h1>
+        <div class="create-issue-panel">
+
+            <form method="post" id="h" action="atrchannel" class="aui">
+                <input type="hidden" name="actionType" value="runStrategy">
+                <div class="field-group">
+                    <label for="h-fsummary">
+                        Stock CheckList: (VN30, VN50, "ACB;FPT;...")
+                        <span class="aui-icon icon-required"></span>
+                        <span class="content">required</span>
+                    </label>
+                    <input id="h-fsummary" class="text long-field" type="text" name="symbol" value="VN50">
+                </div>
+                <div class="field-group">
+                    <label for="h-fdescription">
+                        Run Strategy by username: ($onlineUser)
+                    </label>
+                    <textarea style="height: 200px; width: 300px" id="h-fdescription" name="description">
+						ATR Channel
+						MACD Histogram
+						This field is developping...
+					</textarea>
+                </div>
+                <div class="buttons">
+                    <input class="button" type="submit" value="Create">
+                    <a href="atrchannel">Cancel</a>					
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

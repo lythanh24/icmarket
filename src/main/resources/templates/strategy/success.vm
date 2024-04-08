@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Stock Analystic — Select Strategy to Run</title>
+    <meta name="decorator" content="atl.general">
+</head>
+<body class="page-type-admin">
+<div class="content-container" id="issue-crud-container">
+
+    <div class="content-body">
+        <h1>Stock Chart</h1>
+        <div class="create-issue-panel">
+
+			<img src="/jira/plugins/servlet/chart" alt="Girl in a jacket" width="900" height="800">
+            
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

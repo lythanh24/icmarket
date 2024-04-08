@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="newlife.ta4j"/>  
+  <!-- add our web resources -->  
+  <web-resource key="newlife.ta4j-resources" name="newlife.ta4j Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="newlife.ta4j.css" location="/css/newlife.ta4j.css"/>  
+    <resource type="download" name="newlife.ta4j.js" location="/js/newlife.ta4j.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>newlife.ta4j</context> 
+  </web-resource>  
+  <web-section name="My Links Main Section" i18n-name-key="my-links-main-section.name" key="my_links_section" location="my_links_link" weight="10"/>  
+  <web-item key="my_links_link" name="Link on My Links Main Section" section="system.top.navigation.bar" weight="47"> 
+    <label>Stock Analytics</label>  
+    <link linkId="my_links_link">/plugins/servlet/workforward</link> 
+  </web-item>  
+  <web-item key="strategy_link" name="Strategy Runner" section="my_links_link/my_links_section" weight="10"> 
+    <label>Find Possible Stock</label>  
+    <link linkId="strategy_link">/secure/StrategyAction.jspa</link> 
+  </web-item>  
+  <web-item key="documentation_link" name="Documentation Web Site" section="my_links_link/my_links_section" weight="20"> 
+    <label>MM Strategy</label>  
+    <link linkId="documentation_link">/plugins/servlet/mmstrategy</link> 
+  </web-item>  
+  <web-item key="workforward_link" name="Workforward Web Site" section="my_links_link/my_links_section" weight="30"> 
+    <label>ATR Strategy</label>  
+    <link linkId="workforward_link">/plugins/servlet/atrchannel</link> 
+  </web-item>  
+  <web-item key="website_link" name="Company Web Site" section="my_links_link/my_links_section" weight="40"> 
+    <label>Issue CRUD</label>  
+    <link linkId="website_link">/plugins/servlet/issuecrud</link> 
+  </web-item>  
+  <web-item key="hello_link" name="HelloLink Web Site" section="my_links_link/my_links_section" weight="50"> 
+    <label>Hello Action</label>  
+    <link linkId="hello_link">/secure/HelloUserAction!default.jspa</link> 
+  </web-item>  
+  <web-item key="volume_link" name="Volume Strategy Link" section="my_links_link/my_links_section" weight="60"> 
+    <label>Run Volume Strategy</label>  
+    <link linkId="volume_link">/plugins/servlet/volumeStrategy</link> 
+  </web-item>  
+  <web-item key="climax_link" name="Climax Strategy Link" section="my_links_link/my_links_section" weight="70"> 
+    <label>Run Climax Strategy</label>  
+    <link linkId="climax_link">/plugins/servlet/climax</link> 
+  </web-item>  
+  <webwork1 key="strategy" name="strategy" i18n-name-key="strategy.name"> 
+    <description key="strategy.description">The strategy Plugin</description>  
+    <actions> 
+      <action name="com.newlife.ta4j.jira.webwork.StrategyAction" alias="StrategyAction"> 
+        <view name="success">/templates/strategy/success.vm</view>  
+        <view name="input">/templates/strategy/input.vm</view>  
+        <view name="error">/templates/strategy/error.vm</view> 
+      </action> 
+    </actions> 
+  </webwork1>  
+  <servlet name="Strategy Search" i18n-name-key="hello-search-issue.name" key="strategy-search" class="com.newlife.ta4j.servlet.MovingMomentumStrategy"> 
+    <description key="strategy-search.description">The Hello Search Issue Plugin</description>  
+    <url-pattern>/mmstrategy</url-pattern> 
+  </servlet>  
+  <servlet name="ART Channel" i18n-name-key="art-channel.name" key="art-channel" class="com.newlife.ta4j.servlet.ATRChannel"> 
+    <description key="art-channel.description">The ART Channel Plugin</description>  
+    <url-pattern>/atrchannel</url-pattern> 
+  </servlet>  
+  <servlet name="Issue CRUD" i18n-name-key="issue-crud.name" key="issue-crud" class="com.newlife.ta4j.servlet.IssueCRUD"> 
+    <description key="issue-crud.description">The Issue CRUD Plugin</description>  
+    <url-pattern>/issuecrud</url-pattern> 
+  </servlet>  
+  <servlet name="Tripple ATR Channle" i18n-name-key="tripple-atr-channel.name" key="tripple-atr" class="com.newlife.ta4j.servlet.ATRAndHistogramToChart"> 
+    <description key="tripple-atr-channel.description">Tripple ATR Channel</description>  
+    <url-pattern>/chart</url-pattern> 
+  </servlet>  
+  <servlet name="Volume Strategy Finder" i18n-name-key="volume-strategy.name" key="volume-strategy" class="com.newlife.ta4j.servlet.VolumeStrategyServlet"> 
+    <description key="volume-strategy.description">Volume Strategy Finder</description>  
+    <url-pattern>/volumeStrategy</url-pattern> 
+  </servlet>  
+  <servlet name="Climax Strategy" i18n-name-key="climax-strategy.name" key="climax-strategy" class="com.newlife.ta4j.servlet.VN30ClimaxStrategyServlet"> 
+    <description key="climax-strategy.description">Climax Strategy Builder</description>  
+    <url-pattern>/climax</url-pattern> 
+  </servlet>
+</atlassian-plugin>
