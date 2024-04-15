@@ -1,0 +1,6 @@
+bin/
+target/
+# ignores all .md files
+.md
+# ignore all directories with the name test
+test/

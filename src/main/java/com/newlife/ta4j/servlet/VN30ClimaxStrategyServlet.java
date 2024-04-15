@@ -158,7 +158,8 @@ public class VN30ClimaxStrategyServlet extends HttpServlet {
 				String summary = issue.getSummary();
 				Date created = JiraBarLoader.getDateCreated(summary);
 				
-				if(job=="climax") {
+				if(job.equalsIgnoreCase("climax")) {
+					writer.println("start building climax.... <br><br>");
 					double climax = ClimaxUtil.build(allVN30Symbol, created);				
 					// Check if climax already exits then update.
 					updateClimax(issue, climax);
@@ -166,9 +167,11 @@ public class VN30ClimaxStrategyServlet extends HttpServlet {
 					writer.println("<a href=\"http://localhost:2990/jira/browse/"+issue.getKey()+"\">"+issue.getKey()+"</a>"+issue.getSummary()+" created:"+created+", climax:"+climax+"<br><br>");
 					
 				}
-				if(job =="nhnl") {
+				if(job.equalsIgnoreCase("nhnl")) {
+					writer.print("start building New High-New Low: ");
 					double nhnl = HighLowUtil.build(allVN30Symbol, created);
 					updateNewHighNewLow(issue, nhnl);
+					writer.println(nhnl+".... <br><br>");
 				}				
 				
 			}

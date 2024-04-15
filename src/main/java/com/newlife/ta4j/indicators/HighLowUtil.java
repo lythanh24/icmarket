@@ -51,6 +51,7 @@ public class HighLowUtil {
 			        }
 					if(high == highest) {
 						newhigh++;
+						log.info("-----------> {} new high founded: {}", newhigh, series.getName());
 						break;
 					}
 					
@@ -61,6 +62,7 @@ public class HighLowUtil {
 			        }
 					if(low == lowest) {
 						newlow++;
+						log.info("-----------> {} new low founded: {}", newlow, series.getName());
 						break;
 					}
 					
